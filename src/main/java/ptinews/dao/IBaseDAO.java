@@ -4,7 +4,7 @@ import java.util.List;
 
 import ptinews.mapper.RowMapper;
 
-public interface GenericDAO<T> {
+public interface IBaseDAO<T> {
 	
 	List<T> find(String sql, RowMapper<T> rowMapper, Object... parameters);
 

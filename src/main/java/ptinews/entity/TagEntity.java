@@ -1,6 +1,6 @@
 package ptinews.entity;
 
-public class TagEntity extends AbstractEntity<TagEntity> {
+public class TagEntity extends BaseEntity<TagEntity> {
 
 	private String name;
 

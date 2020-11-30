@@ -10,7 +10,7 @@ public class CommentDAO extends BaseDAO<CommentEntity> implements ICommentDAO {
 	
 	@Override
 	public CommentEntity findOneById(String id) {
-		StringBuilder sql = new StringBuilder("SELECT id, content, status, created_date, last_modified");
+		StringBuilder sql = new StringBuilder("SELECT id, content, status, created_date, last_modified,");
 		sql.append(" tbl_user_id, tbl_article_id FROM tbl_comment WHERE id=?");
 		return find(sql.toString(), new CommentMapper(), id).get(0);
 	}
@@ -35,12 +35,17 @@ public class CommentDAO extends BaseDAO<CommentEntity> implements ICommentDAO {
 	}
 
 	@Override
-	public CommentEntity deleteComment(String id) {
-		return null;
+	public boolean deleteComment(String id) {
+		StringBuilder sql = new StringBuilder("DELETE FROM tbl_comment WHERE id = ?");
+		return update(sql.toString(), id);
 	}
 
 	@Override
 	public boolean updateComment(CommentEntity comment) {
-		return false;
+		StringBuilder sql = new StringBuilder("UPDATE tbl_comment ");
+		sql.append("SET content=?, status=?, last_modified=?, article_id=? ");
+		sql.append("WHERE id=? AND user_id=?");
+		return update(sql.toString(), comment.getContent(), comment.getStatus(), 
+				comment.getLastModified(), comment.getArticleId(), comment.getUserId());
 	}
 }

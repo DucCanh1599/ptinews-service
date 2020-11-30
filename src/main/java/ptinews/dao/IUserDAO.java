@@ -6,4 +6,5 @@ public interface IUserDAO {
 	UserEntity checkLogin(String email, String password);
 	void save(UserEntity user);
 	UserEntity findOneByEmail(UserEntity user);
+	UserEntity findOneById(String id);
 }

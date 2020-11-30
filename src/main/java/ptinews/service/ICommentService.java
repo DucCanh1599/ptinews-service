@@ -8,7 +8,7 @@ public interface ICommentService {
 	List<CommentEntity> findByArticleId(String id);
 	CommentEntity findOneById(String id);
 	CommentEntity addNewComment(CommentEntity comment, String user, String articleId);
-	CommentEntity deleteComment(String id);
+	boolean deleteComment(String id);
 	boolean updateComment(CommentEntity comment);
 	boolean disableComment(CommentEntity comment);
 }

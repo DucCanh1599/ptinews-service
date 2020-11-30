@@ -1,6 +1,6 @@
 package ptinews.entity;
 
-public class CommentEntity extends AbstractEntity<CommentEntity> {
+public class CommentEntity extends BaseEntity<CommentEntity> {
 	
 	private String content;
 	private String userId;

@@ -19,7 +19,7 @@ public class UserDAO extends BaseDAO<UserEntity> implements IUserDAO {
 		sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		insert(sql.toString(), user.getId(), user.getUsername(), user.getPassword(), user.getSalt(),
 				user.getEmail(), user.getIsAdmin(), user.getStatus(), user.getCreatedDate(),
-				user.getCreatedBy(), user.getLastModified());
+				user.getCreatedBy().getId(), user.getLastModified());
 	}
 
 	@Override
@@ -29,5 +29,13 @@ public class UserDAO extends BaseDAO<UserEntity> implements IUserDAO {
 		sql.append(" FROM tbl_user WHERE email = ?");
 		user = find(sql.toString(), new UserMapper(), user.getEmail()).get(0);
 		return user;
+	}
+
+	@Override
+	public UserEntity findOneById(String id) {
+		StringBuilder sql = new StringBuilder("SELECT id, username, password, salt, email,");
+		sql.append(" is_admin, status, created_date, created_by, last_modified");
+		sql.append(" FROM tbl_user WHERE id = ?");
+		return find(sql.toString(), new UserMapper(), id).get(0);
 	}
 }

@@ -1,6 +1,6 @@
 package ptinews.entity;
 
-public class ArticleEntity extends AbstractEntity<ArticleEntity> {
+public class ArticleEntity extends BaseEntity<ArticleEntity> {
 	
 	private String title;
 	private String description;
@@ -10,12 +10,13 @@ public class ArticleEntity extends AbstractEntity<ArticleEntity> {
 	private String userId;
 	private String categoryId;
 	private String tagId;
+	private UserEntity createdBy;
 	
 	public ArticleEntity() {
 	}
 
 	public ArticleEntity(String title, String description, String content, String thumnail, 
-			String slug, String userId, String categoryId, String tagId) {
+			String slug, String userId, String categoryId, String tagId, UserEntity createdBy) {
 		this.title = title;
 		this.description = description;
 		this.content = content;
@@ -24,6 +25,7 @@ public class ArticleEntity extends AbstractEntity<ArticleEntity> {
 		this.userId = userId;
 		this.categoryId = categoryId;
 		this.tagId = tagId;
+		this.createdBy = createdBy;
 	}
 
 	public String getTitle() {
@@ -88,5 +90,13 @@ public class ArticleEntity extends AbstractEntity<ArticleEntity> {
 
 	public void setTagId(String tagId) {
 		this.tagId = tagId;
-	}	
+	}
+
+	public UserEntity getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(UserEntity createdBy) {
+		this.createdBy = createdBy;
+	}
 }

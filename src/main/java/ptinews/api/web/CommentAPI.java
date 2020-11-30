@@ -1,4 +1,4 @@
-package ptinews.api.admin;
+package ptinews.api.web;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -61,13 +61,19 @@ public class CommentAPI extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		String encodedId = req.getParameter("id");
+		boolean isDeleted = commentService.deleteComment(encodedId);
+		System.out.println(isDeleted);
 	}
 	
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		String articleId = req.getParameter("articleId");
 	}
 	
 }

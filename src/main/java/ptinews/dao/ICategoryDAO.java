@@ -1,10 +1,10 @@
-package ptinews.service;
+package ptinews.dao;
 
 import java.util.List;
 
 import ptinews.entity.CategoryEntity;
 
-public interface ICategoryService {
+public interface ICategoryDAO {
 	List<CategoryEntity> findAll();
 	CategoryEntity findOneById(String id);
 	CategoryEntity findOneByName(String name);

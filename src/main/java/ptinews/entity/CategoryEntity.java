@@ -1,22 +1,24 @@
 package ptinews.entity;
 
-public class CategoryEntity extends AbstractEntity<CategoryEntity> {
+public class CategoryEntity extends BaseEntity<CategoryEntity> {
 	
 	private String name;
 	private String description;
-	private boolean status;
 	private String slug;
-	private String thumnail;
+	private CategoryEntity parentCategory;
+	private UserEntity createdBy;
 	
 	public CategoryEntity() {
 	}
 	
-	public CategoryEntity(String name, String description, boolean status, String slug, String thumnail) {
+	public CategoryEntity(String name, String description, String slug,
+			CategoryEntity parentCategory, UserEntity createdBy) {
+		super();
 		this.name = name;
 		this.description = description;
-		this.status = status;
 		this.slug = slug;
-		this.thumnail = thumnail;
+		this.parentCategory = parentCategory;
+		this.createdBy = createdBy;
 	}
 
 	public String getName() {
@@ -35,14 +37,6 @@ public class CategoryEntity extends AbstractEntity<CategoryEntity> {
 		this.description = description;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	public String getSlug() {
 		return slug;
 	}
@@ -51,11 +45,19 @@ public class CategoryEntity extends AbstractEntity<CategoryEntity> {
 		this.slug = slug;
 	}
 
-	public String getThumnail() {
-		return thumnail;
+	public CategoryEntity getParentCategory() {
+		return parentCategory;
 	}
 
-	public void setThumnail(String thumnail) {
-		this.thumnail = thumnail;
+	public void setParentCategory(CategoryEntity parentCategory) {
+		this.parentCategory = parentCategory;
+	}
+
+	public UserEntity getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(UserEntity createdBy) {
+		this.createdBy = createdBy;
 	}
 }

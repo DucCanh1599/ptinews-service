@@ -1,24 +1,25 @@
 package ptinews.entity;
 
-public class UserEntity extends AbstractEntity<UserEntity> {
+public class UserEntity extends BaseEntity<UserEntity> {
 	
 	private String username;
 	private String password;
 	private String salt;
 	private String email;
 	private boolean isAdmin;
-	private boolean status;
+	private UserEntity createdBy;
 	
 	public UserEntity() {
 	}
 	
-	public UserEntity(String username, String password, String salt, String email, boolean isAdmin, boolean status) {
+	public UserEntity(String username, String password, String salt, String email,
+			boolean isAdmin, UserEntity createdBy) {
 		this.username = username;
 		this.password = password;
 		this.salt = salt;
 		this.email = email;
 		this.isAdmin = isAdmin;
-		this.status = status;
+		this.createdBy = createdBy;
 	}
 
 	public String getUsername() {
@@ -61,11 +62,11 @@ public class UserEntity extends AbstractEntity<UserEntity> {
 		this.isAdmin = isAdmin;
 	}
 
-	public boolean getStatus() {
-		return status;
+	public UserEntity getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setCreatedBy(UserEntity createdBy) {
+		this.createdBy = createdBy;
 	}
 }

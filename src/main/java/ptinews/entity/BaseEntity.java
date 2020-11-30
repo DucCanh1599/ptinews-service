@@ -4,24 +4,22 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractEntity<T> {
+public class BaseEntity<T> {
 	
 	private String id;
 	private Date createdDate;
-	private String createdBy;
 	private Date lastModified;
 	private boolean status;
 	private String[] ids;
 	private List<T> listModels = new ArrayList<>();
 	
-	public AbstractEntity() {
+	public BaseEntity() {
 	}
 	
-	public AbstractEntity(String id, Date createdDate, String createdBy, Date lastModified, boolean status, String[] ids,
-			List<T> listModels) {
+	public BaseEntity(String id, Date createdDate, String createdBy, Date lastModified,
+			boolean status, String[] ids, List<T> listModels) {
 		this.id = id;
 		this.createdDate = createdDate;
-		this.createdBy = createdBy;
 		this.lastModified = lastModified;
 		this.status = status;
 		this.ids = ids;
@@ -44,14 +42,6 @@ public class AbstractEntity<T> {
 		this.createdDate = createdDate;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-	
 	public Date getLastModified() {
 		return lastModified;
 	}

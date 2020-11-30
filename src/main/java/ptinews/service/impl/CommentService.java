@@ -48,12 +48,22 @@ public class CommentService implements ICommentService {
 	}
 	
 	@Override
-	public CommentEntity deleteComment(String id) {
-		return null;
+	public boolean deleteComment(String encodedId) {
+		byte[] byteId = Base64.getDecoder().decode(encodedId);
+		String id = new String(byteId);
+		if(id != null && !id.isEmpty()) {
+			if(findOneById(id) != null) {
+				return commentDAO.deleteComment(id);
+			}
+		}
+		return false;
 	}
 
 	@Override
 	public boolean updateComment(CommentEntity comment) {
+		if(comment != null) {
+			commentDAO.updateComment(comment);
+		}
 		return false;
 	}
 
@@ -64,6 +74,9 @@ public class CommentService implements ICommentService {
 
 	@Override
 	public CommentEntity findOneById(String id) {
+		if(id != null && !id.isEmpty()) {
+			return commentDAO.findOneById(id);
+		}
 		return null;
 	}
 }

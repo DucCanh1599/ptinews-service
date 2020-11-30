@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ptinews.dao.GenericDAO;
+import ptinews.dao.IBaseDAO;
 import ptinews.mapper.RowMapper;
 import ptinews.utils.DatabaseUtil;
 
-public class BaseDAO<T> implements GenericDAO<T> {
+public class BaseDAO<T> implements IBaseDAO<T> {
 
 	Connection cnt = null;
 	PreparedStatement stm = null;
